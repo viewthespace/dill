@@ -42,7 +42,7 @@ OLD33 = (sys.hexversion < 0x3030000)
 PY34 = (0x3040000 <= sys.hexversion < 0x3050000)
 if PY3: #XXX: get types from .objtypes ?
     import builtins as __builtin__
-    from pickle import _Pickler as StockPickler, Unpickler as StockUnpickler
+    from pickle5 import _Pickler as StockPickler, Unpickler as StockUnpickler
     from _thread import LockType
     if (sys.hexversion >= 0x30200f0):
         from _thread import RLock as RLockType
@@ -72,7 +72,8 @@ else:
          GeneratorType, DictProxyType, XRangeType, SliceType, TracebackType, \
          NotImplementedType, EllipsisType, FrameType, ModuleType, \
          BufferType, BuiltinMethodType, TypeType
-from pickle import HIGHEST_PROTOCOL, PicklingError, UnpicklingError
+from pickle import HIGHEST_PROTOCOL
+from pickle5 import PicklingError, UnpicklingError
 try:
     from pickle import DEFAULT_PROTOCOL
 except ImportError:

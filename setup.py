@@ -362,16 +362,18 @@ if has_setuptools:
 """
     if sys.platform[:3] == 'win':
         setup_code += """
+      install_requires = ['pickle5'],
       extras_require = {'readline': ['pyreadline%s'], 'graph': ['objgraph%s']},
 """ % (pyreadline_version, objgraph_version)
     # verrrry unlikely that this is still relevant
     elif hex(sys.hexversion) < '0x20500f0':
         setup_code += """
-      install_requires = ['ctypes%s'],
+      install_requires = ['pickle5', 'ctypes%s'],
       extras_require = {'readline': [], 'graph': ['objgraph%s']},
 """ % (ctypes_version, objgraph_version)
     else:
         setup_code += """
+      install_requires = ['pickle5'],
       extras_require = {'readline': [], 'graph': ['objgraph%s']},
 """ % (objgraph_version)
 
